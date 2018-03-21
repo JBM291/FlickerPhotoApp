@@ -7,7 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainFlickerActivity extends AppCompatActivity {
+public class MainFlickerActivity extends AppCompatActivity implements GetRawData.OnDownloadComplete {
 
     private static final String TAG = "MainFlickerActivity";
 
@@ -18,7 +18,7 @@ public class MainFlickerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_flicker);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        GetRawData getRawData = new GetRawData();
+        GetRawData getRawData = new GetRawData(this);
         BuildUrl url = new BuildUrl();
         getRawData.execute(url.getUrl());
 
@@ -41,5 +41,13 @@ public class MainFlickerActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onDownloadComplete(String data, DownloadStatus status){
+        if(status == DownloadStatus.OK){
+            Log.d(TAG, "onDownloadComplete: "+ data);
+        }else{
+            Log.e(TAG, "onDownloadComplete: "+status );
+        }
+    }
 
 }

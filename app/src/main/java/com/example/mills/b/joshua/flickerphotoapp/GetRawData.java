@@ -1,5 +1,6 @@
 package com.example.mills.b.joshua.flickerphotoapp;
 
+import android.app.Activity;
 import android.os.AsyncTask;
 import android.util.EventLogTags;
 import android.util.Log;
@@ -23,15 +24,24 @@ enum DownloadStatus{
 }
 class GetRawData  extends AsyncTask<String, Void, String> {
     private static final String TAG = "GetRawData";
+    private final OnDownloadComplete callBack;
     private DownloadStatus downloadStatus;
 
-    public GetRawData() {
+    interface OnDownloadComplete{
+        void onDownloadComplete(String data, DownloadStatus status);
+    }
+
+    public GetRawData(OnDownloadComplete callBack) {
         this.downloadStatus = DownloadStatus.IDLE;
+        this.callBack = callBack;
     }
 
     @Override
     protected void onPostExecute(String s) {
         Log.d(TAG, "onPostExecute: perm"+ s);
+        if(callBack != null){
+           callBack.onDownloadComplete(s,this.downloadStatus);
+        }
 
     }
 
