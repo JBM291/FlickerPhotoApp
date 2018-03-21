@@ -14,7 +14,7 @@ public class BuildUrl {
     private String url;
 
     public BuildUrl() {
-        this.url = UrlPerms.URL.name()+"?"+UrlPerms.format+"&"+UrlPerms.nojsoncallback+"&"+UrlPerms.tagMode;
+        this.url = UrlPerms.URL.getValue()+"?"+UrlPerms.format+"&"+UrlPerms.nojsoncallback+"&"+UrlPerms.tagMode;
     }
 
 
