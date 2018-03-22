@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/FlickerPhotoApp.iml" filepath="$PROJECT_DIR$/.idea/FlickerPhotoApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FlickerPhotoApp.iml" filepath="$PROJECT_DIR$/FlickerPhotoApp.iml" />
       <module fileurl="file://C:\Users\Inferno\FlickerPhotoApp\FlickerPhotoApp.iml" filepath="C:\Users\Inferno\FlickerPhotoApp\FlickerPhotoApp.iml" />
+      <module fileurl="file://C:\Users\joshu\FlickerPhotoApp\.idea\FlickerPhotoApp.iml" filepath="C:\Users\joshu\FlickerPhotoApp\.idea\FlickerPhotoApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://C:\Users\Inferno\FlickerPhotoApp\app\app.iml" filepath="C:\Users\Inferno\FlickerPhotoApp\app\app.iml" />
     </modules>
