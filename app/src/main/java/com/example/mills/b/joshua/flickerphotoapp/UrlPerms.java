@@ -10,7 +10,7 @@ public enum UrlPerms {
     tagModeAny("tagMode","any"),
     tagModeAll("tagMode","all"),
     lang("lang",""),
-    URL("URL","https://api.flickr.com/services/feeds/photos_public.gne");
+    URI("URL","https://api.flickr.com/services/feeds/photos_public.gne");
 
     private final String name;
     private final String value;

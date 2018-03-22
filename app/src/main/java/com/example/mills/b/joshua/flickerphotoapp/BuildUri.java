@@ -11,12 +11,12 @@ import java.util.Arrays;
  * Created by joshua on 03/20/2018.
  */
 
-public class BuildUrl {
+public class BuildUri {
 
 
-    public String getUrl(String searchCriteria, boolean matchAll){
+    public String getUri(String searchCriteria, boolean matchAll){
 
-        return Uri.parse(UrlPerms.URL.getValue()).buildUpon()
+        return Uri.parse(UrlPerms.URI.getValue()).buildUpon()
                 .appendQueryParameter("tags", searchCriteria)
                 .appendQueryParameter(UrlPerms.format.getName(),UrlPerms.format.getValue())
                 .appendQueryParameter(UrlPerms.nojsoncallback.getName(),UrlPerms.nojsoncallback.getValue())
