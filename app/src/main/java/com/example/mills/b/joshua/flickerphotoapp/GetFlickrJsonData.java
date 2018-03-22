@@ -35,5 +35,7 @@ class GetFlickrJsonData implements GetRawData.OnDownloadComplete {
 
     void executeSameTread(String searchCriteria){
         Log.d(TAG, "executeSameTread: "+ searchCriteria);
+        GetRawData getRawData = new GetRawData(this);
+        getRawData.execute(new BuildUrl().getUrl(searchCriteria,matchAll));
     }
 }

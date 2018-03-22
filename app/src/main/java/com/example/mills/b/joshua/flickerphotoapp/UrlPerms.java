@@ -5,9 +5,11 @@ package com.example.mills.b.joshua.flickerphotoapp;
  */
 
 public enum UrlPerms {
-    format("format=","json"),
-    nojsoncallback("nojsoncallback=","1"),
-    tagMode("tagMode=","any"),
+    format("format","json"),
+    nojsoncallback("nojsoncallback","1"),
+    tagModeAny("tagMode","any"),
+    tagModeAll("tagMode","all"),
+    lang("lang",""),
     URL("URL","https://api.flickr.com/services/feeds/photos_public.gne");
 
     private final String name;
@@ -15,6 +17,9 @@ public enum UrlPerms {
     private  UrlPerms(String name, String value){
         this.name = name;
         this.value = value;
+    }
+    public String getName(){
+      return this.name;
     }
 
     public String getValue(){

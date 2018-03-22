@@ -18,9 +18,9 @@ public class MainFlickerActivity extends AppCompatActivity implements GetRawData
         setContentView(R.layout.activity_main_flicker);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        GetRawData getRawData = new GetRawData(this);
-        BuildUrl url = new BuildUrl();
-        getRawData.execute(url.getUrl());
+
+
+
 
         Log.d(TAG, "onCreate: end");
     }
