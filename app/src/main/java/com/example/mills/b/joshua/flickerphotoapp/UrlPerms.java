@@ -9,12 +9,12 @@ public enum UrlPerms {
     nojsoncallback("nojsoncallback","1"),
     tagModeAny("tagMode","any"),
     tagModeAll("tagMode","all"),
-    lang("lang",""),
-    URI("URL","https://api.flickr.com/services/feeds/photos_public.gne");
+    lang("lang","en-us"),
+    URL("URL","https://api.flickr.com/services/feeds/photos_public.gne");
 
     private final String name;
     private final String value;
-    private  UrlPerms(String name, String value){
+    UrlPerms(String name, String value){
         this.name = name;
         this.value = value;
     }

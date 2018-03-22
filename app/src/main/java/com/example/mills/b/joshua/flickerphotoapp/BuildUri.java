@@ -16,7 +16,7 @@ public class BuildUri {
 
     public String getUri(String searchCriteria, boolean matchAll){
 
-        return Uri.parse(UrlPerms.URI.getValue()).buildUpon()
+        return Uri.parse(UrlPerms.URL.getValue()).buildUpon()
                 .appendQueryParameter("tags", searchCriteria)
                 .appendQueryParameter(UrlPerms.format.getName(),UrlPerms.format.getValue())
                 .appendQueryParameter(UrlPerms.nojsoncallback.getName(),UrlPerms.nojsoncallback.getValue())
