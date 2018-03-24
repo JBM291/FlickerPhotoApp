@@ -37,7 +37,9 @@ class GetRawData  extends AsyncTask<String, Void, String> {
     }
 
     void executeSameTread(String s){
-        onPostExecute(doInBackground(s));
+       if(this.callBack != null){
+           this.callBack.onDownloadComplete(doInBackground(s),this.downloadStatus);
+       }
     }
 
     @Override
