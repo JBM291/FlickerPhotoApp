@@ -1,5 +1,6 @@
 package com.example.mills.b.joshua.flickerphotoapp;
 
+import android.os.AsyncTask;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -13,7 +14,7 @@ import java.util.List;
  * Created by joshua on 03/22/2018.
  */
 
-class GetFlickrJsonData implements GetRawData.OnDownloadComplete {
+class GetFlickrJsonData extends AsyncTask<String, Void, List<Photo>> implements GetRawData.OnDownloadComplete {
     private static final String TAG = "GetFlickrJsonData";
     private List<Photo> photoList = null;
     private String baseUrl;
@@ -21,7 +22,7 @@ class GetFlickrJsonData implements GetRawData.OnDownloadComplete {
     private boolean matchAll;
 
     private final OnDataAvailable CallBack;
-
+    private boolean runningOnSameThread = false;
 
 
     interface OnDataAvailable{
@@ -36,9 +37,26 @@ class GetFlickrJsonData implements GetRawData.OnDownloadComplete {
     }
 
     void executeSameTread(String searchCriteria){
+        runningOnSameThread = true;
         Log.d(TAG, "executeSameTread: "+ searchCriteria);
         GetRawData getRawData = new GetRawData(this);
         getRawData.execute(new BuildUri().getUri(searchCriteria,matchAll));
+    }
+
+    @Override
+    protected void onPostExecute(List<Photo> photos) {
+
+
+       if(CallBack != null){
+           this.CallBack.OnDataAvailable(photoList, DownloadStatus.OK);
+       }
+    }
+
+    @Override
+    protected List<Photo> doInBackground(String... params) {
+        GetRawData getRawData = new GetRawData(this);
+        getRawData.executeSameTread(new BuildUri().getUri(params[0],matchAll));
+        return this.photoList;
     }
 
     @Override
@@ -69,7 +87,7 @@ class GetFlickrJsonData implements GetRawData.OnDownloadComplete {
             }
         }
 
-        if(this.CallBack != null){
+        if(runningOnSameThread && this.CallBack != null){
             this.CallBack.OnDataAvailable(this.photoList, status);
         }
     }

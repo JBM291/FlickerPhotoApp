@@ -21,10 +21,16 @@ public class MainFlickerActivity extends AppCompatActivity implements GetFlickrJ
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-
-
         Log.d(TAG, "onCreate: end");
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        GetFlickrJsonData getFlickrJsonData = new GetFlickrJsonData(this,UrlPerms.URL.getName(),UrlPerms.lang.getValue(),false);
+        getFlickrJsonData.execute("");
     }
 
     @Override
@@ -46,6 +52,15 @@ public class MainFlickerActivity extends AppCompatActivity implements GetFlickrJ
 
     @Override
     public void OnDataAvailable(List<Photo> data, DownloadStatus status) {
+        if(status == DownloadStatus.OK){
+            for (Photo p:data) {
+                Log.d(TAG, "OnDataAvailable: "+p.toString());
+            }
+        }else{
 
+        }
     }
+
+
+
 }

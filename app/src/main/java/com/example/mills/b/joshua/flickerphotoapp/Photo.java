@@ -19,6 +19,7 @@ class Photo {
         this.link = link;
         this.tags = tags;
         this.image = image;
+
     }
 
     public String getTitle() {

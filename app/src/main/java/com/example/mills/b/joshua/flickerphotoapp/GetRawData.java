@@ -36,6 +36,10 @@ class GetRawData  extends AsyncTask<String, Void, String> {
         this.callBack = callBack;
     }
 
+    void executeSameTread(String s){
+        onPostExecute(doInBackground(s));
+    }
+
     @Override
     protected void onPostExecute(String s) {
         Log.d(TAG, "onPostExecute: perm"+ s);
@@ -94,4 +98,5 @@ class GetRawData  extends AsyncTask<String, Void, String> {
         downloadStatus = DownloadStatus.FAILED_OR_EMPTY;
         return null;
     }
+
 }
