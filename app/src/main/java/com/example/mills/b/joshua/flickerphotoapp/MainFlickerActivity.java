@@ -37,8 +37,8 @@ public class MainFlickerActivity extends AppCompatActivity implements GetFlickrJ
     @Override
     protected void onResume() {
         super.onResume();
-        GetFlickrJsonData getFlickrJsonData = new GetFlickrJsonData(this,UrlPerms.URL.getName(),UrlPerms.lang.getValue(),false);
-        getFlickrJsonData.execute("");
+        GetFlickrJsonData getFlickrJsonData = new GetFlickrJsonData(this,UrlPerms.URL.getName(),UrlPerms.lang.getValue(),true);
+        getFlickrJsonData.execute("android, demo");
     }
 
     @Override
