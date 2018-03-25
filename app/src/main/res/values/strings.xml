@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Flicker Photo App</string>
-    <string name="title_activity_main_flicker">MainFlickerActivity</string>
+    <string name="title_activity_main_flicker">Activity</string>
+    <string name="title_activity_search">Search Activity</string>
+    <string name="title_activity_photo_detail">Photo Details</string>
 </resources>
