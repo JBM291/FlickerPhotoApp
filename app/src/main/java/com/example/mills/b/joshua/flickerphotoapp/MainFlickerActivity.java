@@ -2,16 +2,20 @@ package com.example.mills.b.joshua.flickerphotoapp;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainFlickerActivity extends AppCompatActivity implements GetFlickrJsonData.OnDataAvailable{
 
     private static final String TAG = "MainFlickerActivity";
+    private FlickrRecyclerViewAdapter flickrRecyclerViewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +24,11 @@ public class MainFlickerActivity extends AppCompatActivity implements GetFlickrJ
         setContentView(R.layout.activity_main_flicker);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        flickrRecyclerViewAdapter = new FlickrRecyclerViewAdapter(this,new ArrayList<Photo>());
+        recyclerView.setAdapter(flickrRecyclerViewAdapter);
         Log.d(TAG, "onCreate: end");
 
 
@@ -53,11 +61,7 @@ public class MainFlickerActivity extends AppCompatActivity implements GetFlickrJ
     @Override
     public void OnDataAvailable(List<Photo> data, DownloadStatus status) {
         if(status == DownloadStatus.OK){
-            for (Photo p:data) {
-                Log.d(TAG, "OnDataAvailable: "+p.toString());
-            }
-        }else{
-
+            flickrRecyclerViewAdapter.loadNewData(data);
         }
     }
 
