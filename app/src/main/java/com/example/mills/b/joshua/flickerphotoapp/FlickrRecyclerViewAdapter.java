@@ -12,6 +12,9 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by Inferno on 3/25/2018.
  */
@@ -60,14 +63,12 @@ class FlickrRecyclerViewAdapter extends RecyclerView.Adapter<FlickrRecyclerViewA
     }
 
     static class FlickerImageViewHolder extends RecyclerView.ViewHolder{
-        ImageView thumbnail = null;
-        TextView title = null;
+        @BindView(R.id.thumbnail) ImageView thumbnail = null;
+        @BindView(R.id.title) TextView title = null;
 
-        public FlickerImageViewHolder(View itemView) {
+        FlickerImageViewHolder(View itemView) {
             super(itemView);
-
-            this.thumbnail = itemView.findViewById(R.id.thumbnail);
-            this.title = itemView.findViewById(R.id.title);
+            ButterKnife.bind(this,itemView);
         }
     }
 
