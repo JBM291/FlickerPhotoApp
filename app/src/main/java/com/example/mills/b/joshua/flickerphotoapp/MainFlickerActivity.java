@@ -59,8 +59,18 @@ public class MainFlickerActivity extends BaseActivity implements GetFlickrJsonDa
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
+        switch (id){
+            case R.id.actions_settings:
+                return true;
+            case R.id.action_search:
+                Intent intent = new Intent(this,SearchActivity.class);
+                startActivity(intent);
+                return true;
+             default:
+                 return super.onOptionsItemSelected(item);
+        }
 
-        return super.onOptionsItemSelected(item);
+
     }
 
 
