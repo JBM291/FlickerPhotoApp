@@ -1,5 +1,6 @@
 package com.example.mills.b.joshua.flickerphotoapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,11 +9,13 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainFlickerActivity extends AppCompatActivity implements GetFlickrJsonData.OnDataAvailable{
+public class MainFlickerActivity extends BaseActivity implements GetFlickrJsonData.OnDataAvailable,
+                                                            RecyclerClickListener.OnRecyclerClickListener{
 
     private static final String TAG = "MainFlickerActivity";
     private FlickrRecyclerViewAdapter flickrRecyclerViewAdapter;
@@ -22,10 +25,13 @@ public class MainFlickerActivity extends AppCompatActivity implements GetFlickrJ
         Log.d(TAG, "onCreate: start");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_flicker);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
+        activateToolbar(false);
+
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        recyclerView.addOnItemTouchListener(new RecyclerClickListener(this, recyclerView, this));
 
         flickrRecyclerViewAdapter = new FlickrRecyclerViewAdapter(this,new ArrayList<Photo>());
         recyclerView.setAdapter(flickrRecyclerViewAdapter);
@@ -38,7 +44,7 @@ public class MainFlickerActivity extends AppCompatActivity implements GetFlickrJ
     protected void onResume() {
         super.onResume();
         GetFlickrJsonData getFlickrJsonData = new GetFlickrJsonData(this,UrlPerms.URL.getName(),UrlPerms.lang.getValue(),true);
-        getFlickrJsonData.execute("android, demo");
+        getFlickrJsonData.execute("");
     }
 
     @Override
@@ -66,5 +72,17 @@ public class MainFlickerActivity extends AppCompatActivity implements GetFlickrJ
     }
 
 
+    @Override
+    public void onItemClick(View view, int position) {
+        Intent intent = new Intent(this,PhotoDetailActivity.class);
+        intent.putExtra(PHOTO_TRANSFER,flickrRecyclerViewAdapter.getPhoto(position));
+        startActivity(intent);
+    }
 
+    @Override
+    public void onItemLongClick(View view, int position) {
+        Intent intent = new Intent(this,PhotoDetailActivity.class);
+        intent.putExtra(PHOTO_TRANSFER,flickrRecyclerViewAdapter.getPhoto(position));
+        startActivity(intent);
+    }
 }

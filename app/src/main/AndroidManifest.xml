@@ -33,7 +33,12 @@
         <activity
             android:name=".PhotoDetailActivity"
             android:label="@string/title_activity_photo_detail"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:parentActivityName=".MainFlickerActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.mills.b.joshua.flickerphotoapp.MainFlickerActivity" />
+        </activity>
     </application>
 
 </manifest>
