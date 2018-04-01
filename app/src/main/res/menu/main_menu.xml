@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <item
+        android:id="@+id/actions_settings"
+        android:title="@string/actions_settingsTxt" />
+    <item
+        android:id="@+id/action_search"
+        android:title="@string/action_searchTxt" />
 </menu>
