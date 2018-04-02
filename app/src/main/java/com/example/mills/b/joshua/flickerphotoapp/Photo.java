@@ -1,10 +1,13 @@
 package com.example.mills.b.joshua.flickerphotoapp;
 
+import java.io.Serializable;
+
 /**
  * Created by Inferno on 3/21/2018.
  */
 
-class Photo {
+class Photo implements Serializable{
+    private static final long serialVersionUID = 1L;
     private String title;
     private String author;
     private String authorId;

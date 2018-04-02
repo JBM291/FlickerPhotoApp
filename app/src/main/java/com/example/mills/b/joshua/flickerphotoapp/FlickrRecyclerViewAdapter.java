@@ -40,7 +40,7 @@ class FlickrRecyclerViewAdapter extends RecyclerView.Adapter<FlickrRecyclerViewA
     @Override
     public void onBindViewHolder(FlickerImageViewHolder holder, int position) {
         Photo photoItem = photosList.get(position);
-        Picasso.with(context).load(photoItem.getImage())
+        Picasso.get().load(photoItem.getImage())
                 .error(R.drawable.placeholder)
                 .placeholder(R.drawable.placeholder)
                 .into(holder.thumbnail);

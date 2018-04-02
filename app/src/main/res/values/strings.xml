@@ -3,4 +3,10 @@
     <string name="title_activity_main_flicker">Activity</string>
     <string name="title_activity_search">Search Activity</string>
     <string name="title_activity_photo_detail">Photo Details</string>
+    <string name="action_searchTxt">Search</string>
+    <string name="actions_settingsTxt">Settings</string>
+    <string name="flickr_Thumbnail">Flicker Photo</string>
+    <string name="photo_title_text">Title: %s</string>
+    <string name="photo_tags_text">Tags: %s</string>
+    <string name="photo_author_text">Author: %s</string>
 </resources>
